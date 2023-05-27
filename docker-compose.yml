@@ -1,0 +1,25 @@
+
+version: "3"
+
+services:
+
+  server: #название может быть любым но в нашем случае название server 
+
+    build: server/
+
+    command: python ./server.py
+
+
+    ports:
+      - 6866:6866
+
+  client: #название может быть любым но в нашем случае название client 
+
+    build: client/
+ 
+    command: python ./client.py
+
+    network_mode: host
+ 
+    depends_on:
+      - server
